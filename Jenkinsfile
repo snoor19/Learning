@@ -1,10 +1,12 @@
 pipeline {
     agent any
-  stages{
-    stage('Build'){
-      steps{
-          //mvn clean package
-      }
+    tools {
+        maven 'MAVEN_HOME'
+    } 
+    stages {
+        stage('Build'){
+        steps {
+            //mvn clean package
+        }
     }
-  }
 }
