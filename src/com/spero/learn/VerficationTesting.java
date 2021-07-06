@@ -36,19 +36,19 @@ public class VerficationTesting {
 			SecretKeySpec secret_key = new SecretKeySpec(apiKeyByte, "HmacSHA256");
 			sha256_HMAC.init(secret_key);
 			byte[] digestBytes = sha256_HMAC.doFinal(payloadByte);
-			logger.debug("DigestBytes : {}", digestBytes);
-			logger.debug("signatBytes : {}", signatureByte);
-			logger.debug(new String(digestBytes, "UTF-8"));
-			logger.debug(new String(signatureByte, "UTF-8"));
+			System.out.println("DigestBytes : {}"+ digestBytes);
+			System.out.println("signatBytes : {}"+signatureByte);
+			System.out.println(new String(digestBytes,"UTF-8"));
+			System.out.println(new String(signatureByte, "UTF-8"));
 			// Step -4
 			if (!MessageDigest.isEqual(digestBytes, signatureByte)) {
-				logger.debug("*Payment* Digest did not match with signature. So rejecting the request");
+				System.out.println("*Payment* Digest did not match with signature. So rejecting the request");
 				return false;
 			} else {
-				logger.debug("*Payment* Digest matched with signature.");
+				System.out.println("*Payment* Digest matched with signature.");
 			}
 		} catch (NoSuchAlgorithmException | InvalidKeyException | UnsupportedEncodingException e) {
-			logger.debug("*Payment * Recieved error while getting hmac digest : {}", e);
+			System.out.println("*Payment * Recieved error while getting hmac digest : {}"+ e);
 			return false;
 		}
 
@@ -56,7 +56,7 @@ public class VerficationTesting {
 	}
 
 	public static void main(String[] args) {
-		String payload = "oVllS3OjnXj5CXRfetjI9Vdea-R_YnYA-RoFFT9yTeE";
+		String payload = "{\"msisdn\":\"7795349007\",\"amount\":100,\"currency\":\"INR\",\"mode\":\"credit\",\"info\":\"key:value|key1:value1\",\"srvkey\":\"RBT_ACT_FREEPACK_SC\",\"refid\":\"fdf345345345ergfdgd\",\"account_detail\":{\"bank_name\":\"Kotak\",\"user_name\":\"onmobile\",\"ifsc\":\"KKBK00000\",\"account_no\":\"123456\",\"account_type\":\"savings\"}}";
 		String signature = "yzBV_b4zVsPAnuLBBpcft8SQWR7YVbxoF-3uvS6_oM8=";
 
 		new VerficationTesting().validatePayload(payload, signature);

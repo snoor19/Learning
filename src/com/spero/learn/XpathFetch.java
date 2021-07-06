@@ -13,33 +13,11 @@ import org.w3c.dom.Document;
 public class XpathFetch {
 
 	public static void main(String[] args) {
-		String str = "<?xml version = \"1.0\" encoding = \"UTF-8\"?>\r\n" + 
-				"<S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope\">\r\n" + 
-				"<S:Body>\r\n" + 
-				"<uidmsisdnResponse xmlns=\"http://bouyguestelecom.fr/Seryices/uidmsisdn.xsd\">\r\n" + 
-				"<result>200</result>\r\n" + 
-				"<resultMessage>SUCCESS</resultMessage>\r\n" + 
-				"<requestId>1c0653cd-e897-41af-bd30.55f3a195ff33</requestId>\r\n" + 
-				"<subscriptionInfo>\r\n" + 
-				"<ci>01234012345</ci>\r\n" + 
-				"<subscription>\r\n" + 
-				"<uid>W1KRVQI0WHK</uid>\r\n" + 
-				"<cpeid>848e796f6134605b5e1013b08981</cpeid>\r\n" + 
-				"<transactionId>BBAA99887766554433221100</transactionId>\r\n" + 
-				"<status>Confirmed</status>\r\n" + 
-				"<currency>EUR</currency>\r\n" + 
-				"<price>1.5</price>\r\n" + 
-				"<tax>0.2</tax>\r\n" + 
-				"<total>1.7</total>\r\n" + 
-				"<charge_date>20200727</charge_date>\r\n" + 
-				"<refundCode />\r\n" + 
-				"<status_update_date>20200721</status_update_date>\r\n" + 
-				"</subscription>\r\n" + 
-				"</subscriptionInfo>\r\n" + 
-				"<remainingAttempts>49</remainingAttempts>\r\n" + 
-				"</uidmsisdnResponse>\r\n" + 
-				"</S:Body>\r\n" + 
-				"</S:Envelope>";
+		String str = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\r\n" + 
+				"<GatewayResponse>\r\n" + 
+				"    <ResponseHeader status=\"pass\" result_code=\"00\" response_timestamp=\"02/07/2021.00:00:16\" additional_info=\"SUCCESS\">\r\n" + 
+				"    </ResponseHeader>\r\n" + 
+				"</GatewayResponse>";
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);
 		DocumentBuilder builder;
@@ -56,7 +34,7 @@ public class XpathFetch {
 			XPath xpath = xpathFactory.newXPath();
 
 			XPathExpression expr = xpath.compile(
-					"/*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='uidmsisdnResponse']/*[local-name()='subscriptionInfo']/*[local-name()='subscription']/*[local-name()='uid']");
+					"/GatewayResponse/ResponseHeader/@additional_info");
 			String resp = expr.evaluate(doc);
 			System.out.println("Response:"+resp);
 			}catch (Exception e) {
