@@ -5,8 +5,9 @@ pipeline {
     } 
     stages {
         stage('Build'){
-        steps {
-            //mvn clean package
+            steps {
+                //mvn clean package
+            }
         }
     }
 }
