@@ -33,6 +33,12 @@ public class TimeTestForDeprecated {
         Calendar currTime = Calendar.getInstance();
         
         System.out.println("Current Year::"+currTime.get(Calendar.YEAR));
+        
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(Calendar.YEAR, 0); 
+        System.out.println("Data::"+cal.getTime());
+        
 	}
 
 }
