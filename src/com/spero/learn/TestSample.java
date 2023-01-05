@@ -33,6 +33,9 @@ public class TestSample {
 		String result = accountMap!=null?(accountMap.entrySet().stream().map(e -> e.getKey() + ":" + e.getValue())
 				.collect(Collectors.joining("|"))):"";
 		System.out.println("Result::"+result);
+		String str = "/griff/getUserInfo.jsp?sessionid=$REF_ID$";
+		str = str.replace("$REF_ID$", "what");
+		System.out.println("Next::"+str);
 	}
 	
 	public static byte[] hexStringToByteArray(String s) {

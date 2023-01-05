@@ -23,6 +23,8 @@ public class BkashSignature {
 //			String.Concat(Array.ConvertAll(hash, x => x.ToString("X2")));
 //			String sign = java.util.Base64.getEncoder().encodeToString(digestBytes);
 			String sign = Base64.encodeBase64String(digestBytes);
+			if( sign != null)
+				return sign;
 //			sign = sign.trim()('=').Replace('+', '-').Replace('/', '_');
 			int index = sign.lastIndexOf("=");
 			if( index>=0 )
@@ -37,7 +39,7 @@ public class BkashSignature {
 
 	public static void main(String[] args) {
 		String walletId = "VeXG0T8aHxssbFk8MRFFcj3o2avY2wZD";
-	    String message = "{\"status\": \"SUCCEEDED_PAYMENT\", \"subscription\": {\"customerReference\": \"\",\"id\": 79,\"merchantReference\": \"None\",\"reference\": \"K7NS75TE\",\"serviceReference\": \"None\"},\"subscriptionPayment\": {\"dueDate\": \"2020-01-29\",\"id\": 831,\"reverseTransactionAmount\": \"None\",\"reverseTransactionDate\": \"None\",\"reverseTransactionId\": \"None\",\"transactionDate\": \"2020-01-29T08:23:44.525872Z\",\"transactionId\": \"7AT501UAAT\"},\"timestamp\": \"2020-01-29T08:23:45.320607Z\",\"type\": \"SUBSCRIPTION_PAYMENT\"}";
+	    String message = "{\"msisdn\":\"9876543210\",\"req_ref_id\":\"sfasdfasdfassdv\",\"info\":\"data:test\"}";
 	    
 	    BkashSignature re = new BkashSignature();
 	    String signatureNew = re.buildSignature(message, walletId);
