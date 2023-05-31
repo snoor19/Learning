@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
+import com.onmobile.prism.util.velocity.VelocityUtils;
 
 //import net.minidev.json.JSONArray;
 
@@ -49,5 +50,45 @@ public class JsonParseRead {
 //		System.out.println("return value::" + getJSONElementValue(data, path));
 		String data1 = "{\"getSessionKeyResponse\":{\"result\":\"6ffbd0ae-187b-4e92-9dbd-bd87f92fa1e1\"}}";
 //		System.out.println("return value::"+getJSONElementValue(data1, "$.getSessionKeyResponse.result"));
+		Object value = "";
+		try {
+			value = JsonPath.read("{\r\n" + 
+					"  \"statusCode\": \"0000\",\r\n" + 
+					"  \"data\": {\r\n" + 
+					"    \"type\": \"Prepaid\",\r\n" + 
+					"    \"status\": \"Active\",\r\n" + 
+					"    \"startDate\": \"20201019T12:00:00+0000\",\r\n" + 
+					"    \"endDate\": \"20240519T12:00:00+0000\",\r\n" + 
+					"    \"language\": \"English\",\r\n" + 
+					"    \"tariffPlanId\": 1,\r\n" + 
+					"    \"tariffPlan\": \"Classic\",\r\n" + 
+					"    \"activationStatusFlag\": false,\r\n" + 
+					"    \"negativeBarringStatusFlag\": false,\r\n" + 
+					"    \"supervisionPeriodWarningActiveFlag\": false,\r\n" + 
+					"    \"serviceFeePeriodWarningActiveFlag\": false,\r\n" + 
+					"    \"serviceFeePeriodExpiryFlag\": false,\r\n" + 
+					"    \"serviceFeePeriodExpiryActiveFlag\": false,\r\n" + 
+					"    \"balance\": [\r\n" + 
+					"      {\r\n" + 
+					"        \"balanceType\": \"Main Balance\",\r\n" + 
+					"        \"balanceDetail\": {\r\n" + 
+					"          \"type\": \"CURRENCY\",\r\n" + 
+					"          \"activeValue\": \"30.00\",\r\n" + 
+					"          \"activeUnit\": \"USD\"\r\n" + 
+					"        }\r\n" + 
+					"      }\r\n" + 
+					"    ]\r\n" + 
+					"  },\r\n" + 
+					"  \"links\": [\r\n" + 
+					"    {\r\n" + 
+					"      \"rel\": \"self\",\r\n" + 
+					"      \"href\": \"https://preprod.api.mtn.com/v2/customers/231880600175/plans\"\r\n" + 
+					"    }\r\n" + 
+					"  ]\r\n" + 
+					"}", "$.data.balance[0].balanceDetail.activeValue"); // cannot be string as for integers it throws exception
+		} catch (Exception e) {
+			System.out.println("Exception in fetching value from JSON:{}"+ e.getMessage());
+		}
+		System.out.println("Value to be returned:{}"+ value);
 	}
 }
