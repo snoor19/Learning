@@ -72,5 +72,15 @@ public class StringSplit {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		String fileIdsdATA = "CDR1,CDR2,CDR3,CDR4";
+		String dataaa = "clientid=1,clientsecret=jhjhjhbhj,username=noor,password=Onm0bile,scope=global";
+		String[] keyVals = dataaa.split(",");
+		for (String keyVal : keyVals) {
+			System.out.println("KeyVal::" + keyVal);
+		}
+		List<String> fileIds = Arrays.asList(fileIdsdATA.split(","));
+		for (String fileId : fileIds) {
+			System.out.println("fileId::"+fileId);
+		}
 	}
 }

@@ -13,18 +13,13 @@ import org.w3c.dom.Document;
 public class XpathFetch {
 
 	public static void main(String[] args) {
-		String str = "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n" + 
-				"   <SOAP-ENV:Body>\r\n" + 
-				"      <ns0:MiscPaymentResponse xmlns:ns0=\"http://www.etisalat.ae/Middleware/GenericPaymentService/MiscPaymentResponse.xsd\">\r\n" + 
-				"         <ns0:ResponseData>\r\n" + 
-				"            <ns0:TransactionID>555666</ns0:TransactionID>\r\n" + 
-				"         </ns0:ResponseData>\r\n" + 
-				"         <ns1:AckMessage xmlns:ns1=\"http://www.etisalat.ae/Middleware/SharedResources/Common/AckMessage.xsd\">\r\n" + 
-				"            <ns1:Status>SUCCESS</ns1:Status>\r\n" + 
-				"         </ns1:AckMessage>\r\n" + 
-				"      </ns0:MiscPaymentResponse>\r\n" + 
-				"   </SOAP-ENV:Body>\r\n" + 
-				"</SOAP-ENV:Envelope>";
+		String str = "<response>\r\n" + 
+				"<act>\r\n" + 
+				"<status>SUCCESS</status>\r\n" + 
+				"<reason>SUCCESS</reason>\r\n" + 
+				"<params type=\"NORMAL\" subscriber_type=\"P\" next_bill_date=\"2024-08-22 12:23:11.234\" validity_days=\"1\" grace_count=\"\" balance=\"30.0\" amount=\"30.0\" new_srv_key=\"\"/>\r\n" + 
+				"</act>\r\n" + 
+				"</response>";
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);
 		DocumentBuilder builder;
@@ -41,7 +36,7 @@ public class XpathFetch {
 			XPath xpath = xpathFactory.newXPath();
 
 			XPathExpression expr = xpath.compile(
-					"/*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='MiscPaymentResponse']/*[local-name()='AckMessage']/*[local-name()='Status']");
+					"//reason");
 			String resp = expr.evaluate(doc);
 			System.out.println("Response:"+resp);
 			}catch (Exception e) {

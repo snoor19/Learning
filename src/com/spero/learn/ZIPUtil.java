@@ -1,11 +1,16 @@
 package com.spero.learn;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+
+import com.onmobile.prism.util.PrismBufferedReader;
 
 public class ZIPUtil {
 	private static void zip(File[] files, String dest) throws IOException{
@@ -38,6 +43,17 @@ public class ZIPUtil {
         zos.closeEntry();
         fis.close();
     }
+    
+    private static void readGzip(File file) {
+    	String data = null;
+    	try (BufferedReader br = new BufferedReader(new InputStreamReader(new GZIPInputStream(new FileInputStream(file))))) {
+			while (((data = br.readLine()) != null) && !data.isEmpty()) {
+				System.out.println("Data::"+data);
+			}
+    	} catch (Exception e) {
+    		System.out.println("Exception wile reading file::"+e);
+    	}
+    }
 
 
 
@@ -48,8 +64,20 @@ public class ZIPUtil {
     public static void main(String[] args){
         try {
             System.out.println("gan !!!!");
-            zip(new File[]{new File("D:\\ziptest\\test.txt")},"D:\\ziptest\\prism.zip");
-        } catch (IOException e) {
+//            zip(new File[]{new File("D:\\ziptest\\test.txt")},"D:\\ziptest\\prism.zip");
+//            readGzip(new File("E:\\Jira\\Requirements\\AIS-13\\FTP_Test\\4492101_2023022717_SDGApp6.process"));
+            String fileName = "3154108_20230301200000_1.tmp";
+            fileName = fileName.replace("3154108_", ""); 
+            fileName = fileName.replace(".tmp","") ;
+            System.out.println("Data::"+fileName.substring(0, 15));
+            if(fileName.contains("_")) {
+            	
+            	System.out.println("index::"+fileName.indexOf('_'));
+            	System.out.println("Index for::"+fileName.substring(fileName.indexOf('_')));
+            	fileName = fileName.substring(0, (fileName.indexOf('_')));
+            }
+            System.out.println("fileName:::"+fileName);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

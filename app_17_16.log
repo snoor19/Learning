@@ -1,0 +1,4 @@
+2023-08-29 17:16:40,838 INFO com.spero.learn.LogTester [main] This is an Info Message!
+2023-08-29 17:16:40,844 ERROR com.spero.learn.LogTester [main] Error Occured
+java.lang.ArithmeticException: / by zero
+	at com.spero.learn.LogTester.main(LogTester.java:29) ~[classes/:?]

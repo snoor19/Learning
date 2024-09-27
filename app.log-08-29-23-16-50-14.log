@@ -1,0 +1,14 @@
+2023-08-29 16:33:12,976 DEBUG com.spero.learn.LogTester [main] Hello from Log4j 2
+2023-08-29 16:33:12,979 DEBUG com.spero.learn.LogTester [main] This is a Debug Message!
+2023-08-29 16:33:12,979 INFO com.spero.learn.LogTester [main] This is an Info Message!
+2023-08-29 16:33:12,980 ERROR com.spero.learn.LogTester [main] Error Occured
+java.lang.ArithmeticException: / by zero
+	at com.spero.learn.LogTester.main(LogTester.java:26) ~[classes/:?]
+2023-08-29 16:49:50,076 DEBUG com.spero.learn.LogTester [main] Hello from Log4j 2
+2023-08-29 16:49:50,079 DEBUG com.spero.learn.LogTester [main] This is a Debug Message!
+2023-08-29 16:49:50,079 INFO com.spero.learn.LogTester [main] This is an Info Message!
+2023-08-29 16:49:50,080 ERROR com.spero.learn.LogTester [main] Error Occured
+java.lang.ArithmeticException: / by zero
+	at com.spero.learn.LogTester.main(LogTester.java:26) ~[classes/:?]
+2023-08-29 16:50:14,261 DEBUG com.spero.learn.LogTester [main] Hello from Log4j 2
+2023-08-29 16:50:14,264 DEBUG com.spero.learn.LogTester [main] This is a Debug Message!

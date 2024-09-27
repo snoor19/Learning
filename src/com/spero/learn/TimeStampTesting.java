@@ -29,10 +29,10 @@ public class TimeStampTesting {
 		sdf.setTimeZone(alaskaTz);
 		System.out.println("TOMCAT setting Current time::"+sdf.format(cal.getTime()));
 		System.out.println("===========================================");
-		testTime();
+		zonedDateTime();
 	}//1668598447892
 	
-	public static void testTime() {
+	public static void zonedDateTime() {
 		String dateInString = "2015-01-22 10:15:55";
         LocalDateTime ldt = LocalDateTime.parse(dateInString, DateTimeFormatter.ofPattern(DATE_FORMAT));
 

@@ -3,7 +3,6 @@ package com.spero.learn;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
-import java.util.UUID;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -50,11 +49,8 @@ public static String toHexString(byte[] bytes) {
 }
 
 public static void main(String[] args) {
-	String secretKey = "VeXG0T8aHxssbFk8MRFFcj3o2avY2wZD";
-	String message = "{\r\n" + 
-			"\"msisdn\":\"7795349007\",\r\n" + 
-			"\"actionKey\":\"getAcountInfo\"\r\n" + 
-			"}";
+	String secretKey = "3EbBE-L30-PEDU-KjkhxpEop8SYsanOa";
+	String message = "siteId=4";
 
 	BuildSignature re = new BuildSignature();
 	String signatureNew = re.buildSignature(message, secretKey);

@@ -1,6 +1,7 @@
 package com.spero.learn;
 
 import java.util.Collection;
+import java.util.List;
 
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
@@ -53,42 +54,62 @@ public class JsonParseRead {
 		Object value = "";
 		try {
 			value = JsonPath.read("{\r\n" + 
-					"  \"statusCode\": \"0000\",\r\n" + 
-					"  \"data\": {\r\n" + 
-					"    \"type\": \"Prepaid\",\r\n" + 
-					"    \"status\": \"Active\",\r\n" + 
-					"    \"startDate\": \"20201019T12:00:00+0000\",\r\n" + 
-					"    \"endDate\": \"20240519T12:00:00+0000\",\r\n" + 
-					"    \"language\": \"English\",\r\n" + 
-					"    \"tariffPlanId\": 1,\r\n" + 
-					"    \"tariffPlan\": \"Classic\",\r\n" + 
-					"    \"activationStatusFlag\": false,\r\n" + 
-					"    \"negativeBarringStatusFlag\": false,\r\n" + 
-					"    \"supervisionPeriodWarningActiveFlag\": false,\r\n" + 
-					"    \"serviceFeePeriodWarningActiveFlag\": false,\r\n" + 
-					"    \"serviceFeePeriodExpiryFlag\": false,\r\n" + 
-					"    \"serviceFeePeriodExpiryActiveFlag\": false,\r\n" + 
-					"    \"balance\": [\r\n" + 
-					"      {\r\n" + 
-					"        \"balanceType\": \"Main Balance\",\r\n" + 
-					"        \"balanceDetail\": {\r\n" + 
-					"          \"type\": \"CURRENCY\",\r\n" + 
-					"          \"activeValue\": \"30.00\",\r\n" + 
-					"          \"activeUnit\": \"USD\"\r\n" + 
-					"        }\r\n" + 
-					"      }\r\n" + 
-					"    ]\r\n" + 
-					"  },\r\n" + 
-					"  \"links\": [\r\n" + 
-					"    {\r\n" + 
-					"      \"rel\": \"self\",\r\n" + 
-					"      \"href\": \"https://preprod.api.mtn.com/v2/customers/231880600175/plans\"\r\n" + 
-					"    }\r\n" + 
-					"  ]\r\n" + 
-					"}", "$.data.balance[0].balanceDetail.activeValue"); // cannot be string as for integers it throws exception
+					"    \"output_ResponseCode\": \"0\",\r\n" + 
+					"    \"output_ResponseDesc\": \"success\",\r\n" + 
+					"    \"output_AirtimeBalance\": {\r\n" + 
+					"        \"responseStatus\": {\r\n" + 
+					"            \"status\": \"200\"\r\n" + 
+					"        },\r\n" + 
+					"        \"balances\": [\r\n" + 
+					"            {\r\n" + 
+					"                \"subscriptionId\": \"8c512ccb-06c2-4201-8ac6-f791a0f41d95\",\r\n" + 
+					"                \"offerName\": \"VodajazaS40K3M\",\r\n" + 
+					"                \"state\": \"active\",\r\n" + 
+					"                \"effectiveDate\": \"2024-04-30T21:00:00.000+00:00\",\r\n" + 
+					"                \"expiryDate\": \"2024-05-31T21:00:00.000+00:00\",\r\n" + 
+					"                \"balanceAvailable\": 1995000,\r\n" + 
+					"                \"balanceAmount\": 1995000,\r\n" + 
+					"                \"unitType\": \"CASH\"\r\n" + 
+					"            },\r\n" + 
+					"			{\r\n" + 
+					"                \"subscriptionId\": \"8c512ccb-06c2-4201-8ac6-f791a0f41d97\",\r\n" + 
+					"                \"offerName\": \"VodajazaS30K3M\",\r\n" + 
+					"                \"state\": \"active\",\r\n" + 
+					"                \"effectiveDate\": \"2024-04-30T21:00:00.000+00:00\",\r\n" + 
+					"                \"expiryDate\": \"2024-05-31T21:00:00.000+00:00\",\r\n" + 
+					"                \"balanceAvailable\": 1995000,\r\n" + 
+					"                \"balanceAmount\": 1995000,\r\n" + 
+					"                \"unitType\": \"CASH\"\r\n" + 
+					"            },\r\n" + 
+					"			{\r\n" + 
+					"                \"subscriptionId\": \"8c512ccb-06c2-4201-8ac6-f791a0f41d98\",\r\n" + 
+					"                \"offerName\": \"VodajazaS20K3M\",\r\n" + 
+					"                \"state\": \"active\",\r\n" + 
+					"                \"effectiveDate\": \"2024-04-30T21:00:00.000+00:00\",\r\n" + 
+					"                \"expiryDate\": \"2024-05-31T21:00:00.000+00:00\",\r\n" + 
+					"                \"balanceAvailable\": 1995000,\r\n" + 
+					"                \"balanceAmount\": 1995000,\r\n" + 
+					"                \"unitType\": \"CASH\"\r\n" + 
+					"            },\r\n" + 
+					"            {\r\n" + 
+					"                \"subscriptionId\": \"de22afd9-6327-46f5-92a7-3a55fbd61b0b\",\r\n" + 
+					"                \"offerName\": \"PrepaidCash\",\r\n" + 
+					"                \"state\": \"active\",\r\n" + 
+					"                \"effectiveDate\": \"2024-01-28T23:57:08.000+00:00\",\r\n" + 
+					"                \"expiryDate\": \"2123-01-28T23:57:08.000+00:00\",\r\n" + 
+					"                \"balanceAvailable\": 15336,\r\n" + 
+					"                \"balanceAmount\": 15336,\r\n" + 
+					"                \"unitType\": \"CASH\"\r\n" + 
+					"            }\r\n" + 
+					"        ]\r\n" + 
+					"    },\r\n" + 
+					"    \"output_ConversationID\": \"[OriginalID]\",\r\n" + 
+					"    \"output_OriginatorConversationID\": \"[req.input_OriginatorConversationID]\"\r\n" + 
+					"}", "$.output_AirtimeBalance.balances[*].offerName"); // cannot be string as for integers it throws exception
 		} catch (Exception e) {
 			System.out.println("Exception in fetching value from JSON:{}"+ e.getMessage());
 		}
+//		List<String> list = (List<String>) value; 
 		System.out.println("Value to be returned:{}"+ value);
 	}
 }
